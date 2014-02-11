@@ -21,7 +21,7 @@ wss.on('connection', function(ws) {
 
     var id = setInterval(function() {
         ws.send(JSON.stringify(c) , function() {  });
-    }, 500);
+    }, 333);
 
     console.log('websocket connection open');
 
@@ -32,4 +32,4 @@ wss.on('connection', function(ws) {
 });
 setInterval(function() {
   color();
-}, 500);
+}, 333);
