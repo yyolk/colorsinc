@@ -20,7 +20,7 @@ var color = function(){
 wss.on('connection', function(ws) {
 
     var id = setInterval(function() {
-        ws.send(JSON.stringify(c) , function() {  });
+        ws.send(JSON.stringify(c));
     }, 333);
 
     console.log('websocket connection open');
