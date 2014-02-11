@@ -1,5 +1,6 @@
-# Node.js Websocket Test
+# Socket-Color
 
+A fork of a…
 A tiny demo using the [einaros/ws](http://einaros.github.io/ws/) WebSockets implementation.
 
 # Running Locally
