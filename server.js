@@ -29,7 +29,7 @@ wss.on('connection', function(ws) {
 
     var id = setInterval(function() {
         ws.send(JSON.stringify(c));
-    }, 333);
+    }, 100);
 
     console.log('websocket connection open');
 
