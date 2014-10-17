@@ -36,7 +36,7 @@ wss.on('connection', function(ws) {
     crot = sirot();
     var id = setInterval(function() {
         ws.send(JSON.stringify(c));
-    }, INTERVAL);
+    }, INTERVAL/5);
 
     console.log('websocket connection open');
 
