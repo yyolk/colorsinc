@@ -5,7 +5,7 @@ var WebSocketServer = require('ws').Server
   , port = process.env.PORT || 5000;
 
 var c;
-var INTERVAL = 333;
+var INTERVAL = 555;
 // var color = function(){
 //   c = "rgb(" + Math.floor(Math.random()*255) + "," + Math.floor(Math.random()*255) + "," + Math.floor(Math.random()*255) + ")";  
 // }
