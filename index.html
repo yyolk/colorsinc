@@ -12,7 +12,6 @@
         var msg = {
           type: "message",
           text: "interrupt!",
-          id: clientID,
           date: Date.now()
         };
         ws.send(JSON.stringify(msg));
