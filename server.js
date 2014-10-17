@@ -24,9 +24,15 @@ console.log('http server listening on %d', port);
 var wss = new WebSocketServer({server: server});
 console.log('websocket server created');
 // var c;
-
+var sirot = function() {
+  return setInterval(function() {
+    c = "rgb(" + Math.floor(Math.random()*255) + "," + Math.floor(Math.random()*255) + "," + Math.floor(Math.random()*255) + ")";
+  }, 100);
+}
+var crot = sirot();
 wss.on('connection', function(ws) {
-
+    clearInterval(crot);
+    crot = sirot();
     var id = setInterval(function() {
         ws.send(JSON.stringify(c));
     }, 100);
@@ -38,6 +44,3 @@ wss.on('connection', function(ws) {
         clearInterval(id);
     });
 });
-setInterval(function() {
-  c = "rgb(" + Math.floor(Math.random()*255) + "," + Math.floor(Math.random()*255) + "," + Math.floor(Math.random()*255) + ")";
-}, 100);
