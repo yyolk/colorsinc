@@ -29,6 +29,7 @@ wss.on('connection', function(ws) {
 
     var id = setInterval(function() {
         ws.send(JSON.stringify(c));
+        c = "rgb(" + Math.floor(Math.random()*255) + "," + Math.floor(Math.random()*255) + "," + Math.floor(Math.random()*255) + ")";
     }, 333);
 
     console.log('websocket connection open');
