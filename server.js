@@ -29,7 +29,6 @@ wss.on('connection', function(ws) {
 
     var id = setInterval(function() {
         ws.send(JSON.stringify(c));
-        c = "rgb(" + Math.floor(Math.random()*255) + "," + Math.floor(Math.random()*255) + "," + Math.floor(Math.random()*255) + ")";
     }, 333);
 
     console.log('websocket connection open');
@@ -39,6 +38,6 @@ wss.on('connection', function(ws) {
         clearInterval(id);
     });
 });
-// setInterval(function() {
-//   color();
-// }, 333);
+setInterval(function() {
+  c = "rgb(" + Math.floor(Math.random()*255) + "," + Math.floor(Math.random()*255) + "," + Math.floor(Math.random()*255) + ")";
+}, 100);
