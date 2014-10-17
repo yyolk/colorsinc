@@ -50,6 +50,7 @@ wss.on('connection', function(ws) {
     ws.on('message', function(message){
         console.log('interrupt!');
         ccrot();
+        c = "rgb(" + Math.floor(Math.random()*255) + "," + Math.floor(Math.random()*255) + "," + Math.floor(Math.random()*255) + ")";
         ws.send(JSON.stringify(c));
     });
 });
