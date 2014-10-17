@@ -32,8 +32,11 @@ var sirot = function() {
 }
 var crot = sirot();
 wss.on('connection', function(ws) {
-    clearInterval(crot);
-    crot = sirot();
+    var ccrot = function(){
+      clearInterval(crot);
+      crot = sirot();      
+    }
+    ccrot();
     var id = setInterval(function() {
         ws.send(JSON.stringify(c));
     }, INTERVAL/5);
@@ -44,4 +47,13 @@ wss.on('connection', function(ws) {
         console.log('websocket connection close');
         clearInterval(id);
     });
+    ws.on('message', function(message){
+        console.log('interrupt!');
+        ccrot();
+    });
+});
+ws.on("message", function(data, id) {
+    var mes = server.unmaskMessage(data);
+    var str = server.convertToString(mes.message);
+    console.log(str);
 });

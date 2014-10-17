@@ -7,6 +7,16 @@
         document.body.style.background = JSON.parse(event.data);
         console.log(JSON.parse(event.data));
       }
+      document.onkeypress = function (e) {
+        e = e || window.event;
+        var msg = {
+          type: "message",
+          text: "interrupt!",
+          id: clientID,
+          date: Date.now()
+        };
+        ws.send(JSON.stringify(msg));
+      }
     </script>
   </head>
   <body>
