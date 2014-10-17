@@ -8,14 +8,14 @@ var c;
 // var color = function(){
 //   c = "rgb(" + Math.floor(Math.random()*255) + "," + Math.floor(Math.random()*255) + "," + Math.floor(Math.random()*255) + ")";  
 // }
-
-app.use(express.static(__dirname + '/'));
 app.use(function(req,res,next){
   // var color = function(){
     c = "rgb(" + Math.floor(Math.random()*255) + "," + Math.floor(Math.random()*255) + "," + Math.floor(Math.random()*255) + ")";  
   // }
   next();
 });
+app.use(express.static(__dirname + '/'));
+
 var server = http.createServer(app);
 server.listen(port);
 
