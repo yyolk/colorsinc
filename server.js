@@ -50,6 +50,7 @@ wss.on('connection', function(ws) {
     ws.on('message', function(message){
         console.log('interrupt!');
         ccrot();
+        ws.send(JSON.stringify(c));
     });
 });
 
