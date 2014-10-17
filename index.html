@@ -3,7 +3,6 @@
     <script>
       var host = location.origin.replace(/^http/, 'ws')
       var ws = new WebSocket(host);
-      window.ws = ws;
       ws.onmessage = function (event) {
         document.body.style.background = JSON.parse(event.data);
         console.log(JSON.parse(event.data));
@@ -16,7 +15,7 @@
           id: clientID,
           date: Date.now()
         };
-        window.ws.send(JSON.stringify(msg));
+        ws.send(JSON.stringify(msg));
       }
     </script>
   </head>

@@ -52,8 +52,4 @@ wss.on('connection', function(ws) {
         ccrot();
     });
 });
-ws.on("message", function(data, id) {
-    var mes = server.unmaskMessage(data);
-    var str = server.convertToString(mes.message);
-    console.log(str);
-});
+
