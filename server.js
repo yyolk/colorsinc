@@ -5,6 +5,7 @@ var WebSocketServer = require('ws').Server
   , port = process.env.PORT || 5000;
 
 var c;
+var INTERVAL = 333;
 // var color = function(){
 //   c = "rgb(" + Math.floor(Math.random()*255) + "," + Math.floor(Math.random()*255) + "," + Math.floor(Math.random()*255) + ")";  
 // }
@@ -27,7 +28,7 @@ console.log('websocket server created');
 var sirot = function() {
   return setInterval(function() {
     c = "rgb(" + Math.floor(Math.random()*255) + "," + Math.floor(Math.random()*255) + "," + Math.floor(Math.random()*255) + ")";
-  }, 100);
+  }, INTERVAL);
 }
 var crot = sirot();
 wss.on('connection', function(ws) {
@@ -35,7 +36,7 @@ wss.on('connection', function(ws) {
     crot = sirot();
     var id = setInterval(function() {
         ws.send(JSON.stringify(c));
-    }, 100);
+    }, INTERVAL);
 
     console.log('websocket connection open');
 
