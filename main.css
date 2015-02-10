@@ -1,0 +1,14 @@
+
+  .about  { opacity : 0; transition:opacity 1.2s; }
+  .about:hover { opacity : .75}
+  .about {
+  	height: 400px;
+  	width: 750px;
+  	margin-left: auto;
+  	margin-right: auto;
+  	margin-top: 117px;
+  	margin-bottom: auto;
+  }
+  .about {
+  	font-family: 'Open Sans', serif;
+  }
