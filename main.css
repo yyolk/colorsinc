@@ -9,11 +9,22 @@
   	margin-top: 117px;
   	margin-bottom: auto;
   }
-  
+
   .about {
   	font-family: 'Open Sans', serif;
   }
-  
-    h2 {
+
+a:link {
+	text-decoration: none;
+	color: black;
+}
+
+a:visited {
+	text-decoration: none;
+	color: black;
+}
+
+  h2 {
   	color: white;
   }
+
