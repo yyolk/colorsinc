@@ -8,9 +8,9 @@
       var host = 'ws://ping.colorsinc.co';
       var ws = new WebSocket(host);
       ws.onmessage = function (event) {
-        console.log(JSON.parse(event.data));
-        var particpants, color;
         var parsed = JSON.parse(event.data).split(' ');
+        var particpants, color;
+        console.log(parsed);
         particpants = parseInt(parsed[0]);
         color = parsed[1];
         document.querySelector('#counter').innerText = particpants;
