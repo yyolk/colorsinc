@@ -40,6 +40,7 @@ wss.on('connection', function(ws) {
     var id = setInterval(function() {
         ws.send(JSON.stringify(c));
     }, INTERVAL/5);
+    ws.send(JSON.stringify(c));
 
     console.log('websocket connection open');
 
