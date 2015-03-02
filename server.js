@@ -50,7 +50,7 @@ console.log('http server listening on %d', port);
 var wss = new WebSocketServer({server: server});
 console.log('websocket server created');
 wss.broadcast = function broadcast(data) {
-  wss.clients.forEach(function each(client) {
+  wss.clients.forEach(function (client) {
     client.send(data);
   });
 };
@@ -64,7 +64,9 @@ var sc = function(wss){
     ir: REMAINING,
     i: INTERVAL
   }
-  wss.broadcast(data);
+  if wss.clients.length {
+    wss.broadcast(data);
+  }
 }
 wss.on('connection', function(ws) {
     var id = setInterval(function() {
