@@ -13,6 +13,7 @@
   .about {
   	font-family: 'Open Sans', serif;
   	-webkit-font-smoothing: antialiased;
+    font-weight: 300;
   }
 
 a:link {
@@ -27,7 +28,6 @@ a:visited {
 
   h2 {
   	color: white;
-    font-weight: 300;
   }
 
 #and {
