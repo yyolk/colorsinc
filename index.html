@@ -16,15 +16,15 @@
         document.querySelector('#counter').innerText = particpants;
         document.body.style.background = color;
       }
-      document.onkeypress = function (e) {
-        e = e || window.event;
-        var msg = {
-          type: "message",
-          text: "interrupt!",
-          date: Date.now()
-        };
-        ws.send(JSON.stringify(msg));
-      }
+      // document.onkeypress = function (e) {
+      //   e = e || window.event;
+      //   var msg = {
+      //     type: "message",
+      //     text: "interrupt!",
+      //     date: Date.now()
+      //   };
+      //   ws.send(JSON.stringify(msg));
+      // }
     </script>
   </head>
   <body>

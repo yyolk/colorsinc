@@ -59,8 +59,10 @@ var sc = function(ws){
     i: INTERVAL
   }));
 }
+var clients = [];
 wss.on('connection', function(ws) {
-    participants++;
+    clients.push(ws);
+    participants = clients.length;
     var ccrot = function(){
       clearInterval(crot);
       crot = sirot();      
@@ -76,11 +78,12 @@ wss.on('connection', function(ws) {
     ws.on('close', function() {
         console.log('websocket connection close');
         clearInterval(id);
+        delete clients[ws];
     });
     ws.on('message', function(message){
         console.log('interrupt!');
+        rotate();
         ccrot();
-        c = "rgb(" + Math.floor(Math.random()*255) + "," + Math.floor(Math.random()*255) + "," + Math.floor(Math.random()*255) + ")";
         sc(ws);
     });
 });
