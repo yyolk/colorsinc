@@ -75,7 +75,6 @@ wss.on('connection', function(ws) {
     ws.on('close', function() {
         console.log('websocket connection close');
         clearInterval(id);
-        delete clients[clients.indexOf(ws)];
     });
     ws.on('message', function(message){
         console.log('interrupt!');
