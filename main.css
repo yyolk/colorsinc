@@ -1,39 +1,28 @@
 
-  .about  { opacity : 0; transition:opacity 1.2s; }
-  .about:hover { opacity : .85}
-  .about {
-  	height: 400px;
-  	width: 700px;
-  	margin-left: auto;
-  	margin-right: auto;
-  	margin-top: 117px;
-  	margin-bottom: auto;
-  }
+.about  { opacity : 0; transition:opacity 1.2s; }
+.about:hover { opacity : .85}
+.about {
+	height: 400px;
+	width: 700px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 117px;
+	margin-bottom: auto;
+  font-family: 'Open Sans', serif;
+  -webkit-font-smoothing: antialiased;
+  color: white;
+  font-weight: 300;
+}
 
-  .about {
-  	font-family: 'Open Sans', serif;
-  	-webkit-font-smoothing: antialiased;
-    font-weight: 300;
-  }
-
-a:link {
+.about a:link {
 	text-decoration: none;
 	color: black;
 }
 
-a:visited {
+.about a:visited {
 	text-decoration: none;
 	color: black;
 }
-
-  h2 {
-  	color: white;
-  }
-
-#and {
-	color: white;
-}
-
 
 #websaver {
 	font-size: .9em;
