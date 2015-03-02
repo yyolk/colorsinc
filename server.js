@@ -9,12 +9,15 @@ var INTERVAL = 6853;
 // var color = function(){
 //   c = "rgb(" + Math.floor(Math.random()*255) + "," + Math.floor(Math.random()*255) + "," + Math.floor(Math.random()*255) + ")";  
 // }
+var rotate = function() {
+  for (var i=0;i<3;i++) {
+    c[i] = Math.floor(Math.random()*255);
+  }
+}
+rotate();
 var sirot = function() {
   return setInterval(function() {
-    // c = "rgb(" + Math.floor(Math.random()*255) + "," + Math.floor(Math.random()*255) + "," + Math.floor(Math.random()*255) + ")";
-    for (var i=0;i<3;i++) {
-      c[i] = Math.floor(Math.random()*255);
-    }
+    rotate();
   }, INTERVAL);
 }
 app.use(function(req,res,next){
