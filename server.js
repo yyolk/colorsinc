@@ -21,6 +21,7 @@ var remaining_time = (function() {
   var sr = 0;
   return setInterval(function(){
     sr = sr + sync < INTERVAL ? sr + sync : 0;
+    sr = Math.floor(sr);
     REMAINING = INTERVAL - sr;
   }, sync);
 })();
