@@ -12,7 +12,7 @@
         var particpants, color;
         console.log(parsed);
         particpants = parsed['p'];
-        color = "rgb(" + parsed[r] + "," + parsed[g] + "," + parsed[b] + ")";
+        color = "rgb(" + parsed['r'] + "," + parsed['g'] + "," + parsed['b'] + ")";
         document.querySelector('#counter').innerText = particpants;
         document.body.style.background = color;
       }
