@@ -13,9 +13,11 @@ var rotate = function() {
   }
 }
 rotate();
-var sirot = setInterval(function() {
-    rotate();
-}, INTERVAL);
+var sirot = (function(){
+  setInterval(function() {
+      rotate();
+  }, INTERVAL);
+})();
 var remaining_time = (function() {
   var sync = INTERVAL / 6;
   var sr = 0;
