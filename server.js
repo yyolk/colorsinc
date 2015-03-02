@@ -3,7 +3,7 @@ var WebSocketServer = require('ws').Server
   , express = require('express')
   , app = express()
   , port = process.env.PORT || 5000;
-
+var participants=0;
 var c;
 var INTERVAL = 6853;
 // var color = function(){
@@ -31,16 +31,21 @@ var sirot = function() {
   }, INTERVAL);
 }
 var crot = sirot();
+var sc = function(ws){
+  var compiled = participants + ' ' + c;
+  ws.send(JSON.stringify(compiled));
+}
 wss.on('connection', function(ws) {
+    participants++;
     var ccrot = function(){
       clearInterval(crot);
       crot = sirot();      
     }
     ccrot();
     var id = setInterval(function() {
-        ws.send(JSON.stringify(c));
+        sc(ws);
     }, INTERVAL/5);
-    ws.send(JSON.stringify(c));
+    sc(ws);
 
     console.log('websocket connection open');
 
@@ -52,7 +57,7 @@ wss.on('connection', function(ws) {
         console.log('interrupt!');
         ccrot();
         c = "rgb(" + Math.floor(Math.random()*255) + "," + Math.floor(Math.random()*255) + "," + Math.floor(Math.random()*255) + ")";
-        ws.send(JSON.stringify(c));
+        sc(ws);
     });
 });
 

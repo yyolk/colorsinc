@@ -1,4 +1,8 @@
-
+.about, #counter{
+  font-family: 'Open Sans', serif;
+  -webkit-font-smoothing: antialiased;
+  color: white;
+}
 .about  { opacity : 0; transition:opacity 1.2s; }
 .about:hover { opacity : .85}
 .about {
@@ -26,4 +30,11 @@
 
 #websaver {
 	font-size: 90%;
+}
+
+#counter {
+  font-size: 80%;
+  position:fixed;
+  width:30px;
+  left:0;bottom:0;
 }
