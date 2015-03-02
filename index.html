@@ -8,13 +8,13 @@
       var host = 'ws://ping.colorsinc.co';
       var ws = new WebSocket(host);
       ws.onmessage = function (event) {
+        console.log(JSON.parse(event.data));
         var particpants, color;
-        var parsed = event.data.split(' ');
-        particpants = parseInt(parsed[0].substr(1, parsed[0].length-1));
+        var parsed = JSON.parse(event.data).split(' ');
+        particpants = parseInt(parsed[0]);
         color = parsed[1];
         document.querySelector('#counter').innerText = particpants;
-        document.body.style.background = JSON.parse(event.data);
-        console.log(JSON.parse(event.data));
+        document.body.style.background = color;
       }
       document.onkeypress = function (e) {
         e = e || window.event;
