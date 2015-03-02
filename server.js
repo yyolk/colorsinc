@@ -71,7 +71,9 @@ wss.on('connection', function(ws) {
     // }
     // ccrot();
     var id = setInterval(function() {
-        sc(ws);
+        for (var i=0;i<clients.length;i++){
+          sc(clients[i]);
+        }
     }, INTERVAL/5);
 
     sc(ws);
