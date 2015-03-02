@@ -28,18 +28,6 @@ var remaining_time = (function() {
   }, sync);
 })();
 
-// var sirot = function() {
-//   return setInterval(function() {
-//     rotate();
-//   }, INTERVAL);
-// }
-// sirot();
-
-app.use(function(req,res,next){
-  // sirot();
-  next();
-});
-
 app.use(express.static(__dirname + '/'));
 
 var server = http.createServer(app);
@@ -49,8 +37,9 @@ console.log('http server listening on %d', port);
 
 var wss = new WebSocketServer({server: server});
 console.log('websocket server created');
-wss.broadcast = function broadcast(data) {
-  wss.clients.forEach(function (client) {
+wss.broadcast = function (data) {
+  data = JSON.stringify(data);
+  wss.clients.forEach(function each(client) {
     client.send(data);
   });
 };
@@ -64,8 +53,8 @@ var sc = function(){
     ir: REMAINING,
     i: INTERVAL
   }
+  wss.broadcast(data);
   if (wss.clients.length) {
-    wss.broadcast(data);
   }
 }
 wss.on('connection', function(ws) {
