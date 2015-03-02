@@ -14,7 +14,9 @@ var rotate = function() {
   }
 }
 rotate();
-
+var sirot = setInterval(function() {
+    rotate();
+}, INTERVAL);
 var remaining_time = (function() {
   var sync = INTERVAL / 6;
   var sr = 0;
@@ -25,12 +27,12 @@ var remaining_time = (function() {
   }, sync);
 })();
 
-var sirot = function() {
-  return setInterval(function() {
-    rotate();
-  }, INTERVAL);
-}
-sirot();
+// var sirot = function() {
+//   return setInterval(function() {
+//     rotate();
+//   }, INTERVAL);
+// }
+// sirot();
 
 app.use(function(req,res,next){
   // sirot();
@@ -47,7 +49,8 @@ console.log('http server listening on %d', port);
 var wss = new WebSocketServer({server: server});
 console.log('websocket server created');
 
-var crot = sirot();
+// var crot = sirot();
+var clients = [];
 var sc = function(ws){
   var r = c[0], g = c[1], b = c[2];
   ws.send(JSON.stringify({
@@ -59,18 +62,18 @@ var sc = function(ws){
     i: INTERVAL
   }));
 }
-var clients = [];
 wss.on('connection', function(ws) {
     clients.push(ws);
     participants = clients.length;
-    var ccrot = function(){
-      clearInterval(crot);
-      crot = sirot();      
-    }
-    ccrot();
+    // var ccrot = function(){
+    //   clearInterval(crot);
+    //   // crot = sirot();      
+    // }
+    // ccrot();
     var id = setInterval(function() {
         sc(ws);
     }, INTERVAL/5);
+
     sc(ws);
 
     console.log('websocket connection open');
@@ -78,12 +81,14 @@ wss.on('connection', function(ws) {
     ws.on('close', function() {
         console.log('websocket connection close');
         clearInterval(id);
-        delete clients[ws];
+        delete clients[clients.indexOf(ws)];
     });
     ws.on('message', function(message){
         console.log('interrupt!');
         rotate();
-        ccrot();
-        sc(ws);
+        // ccrot();
+        for (var i=0;i<clients.length;i++){
+          sc(clients[i]);
+        }
     });
 });
