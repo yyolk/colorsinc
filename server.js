@@ -52,16 +52,17 @@ console.log('websocket server created');
 
 var sc = function(wss){
   var r = c[0], g = c[1], b = c[2];
+  data = {
+    r: r,
+    g: g,
+    b: b,
+    p: wss.clients.length,
+    ir: REMAINING,
+    i: INTERVAL
+  }
   wss.broadcast = function broadcast(data) {
     wss.clients.forEach(function each(client){
-      client.send(JSON.stringify({
-        r: r,
-        g: g,
-        b: b,
-        p: wss.clients.length,
-        ir: REMAINING,
-        i: INTERVAL
-      }));
+      client.send(JSON.stringify(data));
     })
   }
 }
