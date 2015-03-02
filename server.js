@@ -4,15 +4,24 @@ var WebSocketServer = require('ws').Server
   , app = express()
   , port = process.env.PORT || 5000;
 var participants=0;
-var c;
+var c = [];
 var INTERVAL = 6853;
 // var color = function(){
 //   c = "rgb(" + Math.floor(Math.random()*255) + "," + Math.floor(Math.random()*255) + "," + Math.floor(Math.random()*255) + ")";  
 // }
+var sirot = function() {
+  return setInterval(function() {
+    // c = "rgb(" + Math.floor(Math.random()*255) + "," + Math.floor(Math.random()*255) + "," + Math.floor(Math.random()*255) + ")";
+    for (var i=0;i<3;i++) {
+      c[i] = Math.floor(Math.random()*255);
+    }
+  }, INTERVAL);
+}
 app.use(function(req,res,next){
   // var color = function(){
-    c = "rgb(" + Math.floor(Math.random()*255) + "," + Math.floor(Math.random()*255) + "," + Math.floor(Math.random()*255) + ")";  
+    // c = "rgb(" + Math.floor(Math.random()*255) + "," + Math.floor(Math.random()*255) + "," + Math.floor(Math.random()*255) + ")";  
   // }
+  sirot();
   next();
 });
 app.use(express.static(__dirname + '/'));
@@ -25,15 +34,15 @@ console.log('http server listening on %d', port);
 var wss = new WebSocketServer({server: server});
 console.log('websocket server created');
 // var c;
-var sirot = function() {
-  return setInterval(function() {
-    c = "rgb(" + Math.floor(Math.random()*255) + "," + Math.floor(Math.random()*255) + "," + Math.floor(Math.random()*255) + ")";
-  }, INTERVAL);
-}
 var crot = sirot();
 var sc = function(ws){
-  var compiled = participants + ' ' + c;
-  ws.send(JSON.stringify(compiled));
+  var r = c[0], g = c[1], b = c[2];
+  ws.send(JSON.stringify({
+    r: r,
+    g: g,
+    b: b,
+    p: participants
+  }));
 }
 wss.on('connection', function(ws) {
     participants++;

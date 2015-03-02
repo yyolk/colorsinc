@@ -8,11 +8,11 @@
       var host = 'ws://ping.colorsinc.co';
       var ws = new WebSocket(host);
       ws.onmessage = function (event) {
-        var parsed = JSON.parse(event.data).split(' ');
+        var parsed = JSON.parse(event.data);
         var particpants, color;
         console.log(parsed);
-        particpants = parseInt(parsed[0]);
-        color = parsed[1];
+        particpants = parsed['p'];
+        color = "rgb(" + parsed[r] + "," + parsed[g] + "," + parsed[b] + ")";
         document.querySelector('#counter').innerText = particpants;
         document.body.style.background = color;
       }
