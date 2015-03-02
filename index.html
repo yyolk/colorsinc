@@ -10,7 +10,7 @@
       ws.onmessage = function (event) {
         var particpants, color;
         var parsed = event.data.split(' ');
-        particpants = parseInt(parsed[0]);
+        particpants = parseInt(parsed[0].substr(1, parsed[0].length-1));
         color = parsed[1];
         document.querySelector('#counter').innerText = particpants;
         document.body.style.background = JSON.parse(event.data);
