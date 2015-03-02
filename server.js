@@ -54,7 +54,7 @@ wss.broadcast = function broadcast(data) {
     client.send(data);
   });
 };
-var sc = function(wss){
+var sc = function(){
   var r = c[0], g = c[1], b = c[2];
   data = {
     r: r,
@@ -70,10 +70,10 @@ var sc = function(wss){
 }
 wss.on('connection', function(ws) {
     var id = setInterval(function() {
-      sc(wss);
+      sc();
     }, INTERVAL/5);
 
-    sc(wss);
+    sc();
 
     console.log('websocket connection open');
 
@@ -84,6 +84,6 @@ wss.on('connection', function(ws) {
     ws.on('message', function(message){
         console.log('interrupt!');
         rotate();
-        sc(wss);
+        sc();
     });
 });
