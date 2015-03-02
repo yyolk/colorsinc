@@ -3,7 +3,6 @@ var WebSocketServer = require('ws').Server
   , express = require('express')
   , app = express()
   , port = process.env.PORT || 5000;
-var participants=0;
 var c = [];
 var INTERVAL = 6853;
 var REMAINING = 0;
@@ -49,34 +48,27 @@ console.log('http server listening on %d', port);
 var wss = new WebSocketServer({server: server});
 console.log('websocket server created');
 
-// var crot = sirot();
-var clients = [];
-var sc = function(ws){
+var sc = function(){
   var r = c[0], g = c[1], b = c[2];
-  ws.send(JSON.stringify({
-    r: r,
-    g: g,
-    b: b,
-    p: participants,
-    ir: REMAINING,
-    i: INTERVAL
-  }));
+  wss.broadcast = function broadcast(data) {
+    wss.clients.forEach(function each(client){
+      client.send(JSON.stringify({
+        r: r,
+        g: g,
+        b: b,
+        p: wss.clients.length,
+        ir: REMAINING,
+        i: INTERVAL
+      }));
+    })
+  }
 }
 wss.on('connection', function(ws) {
-    clients.push(ws);
-    participants = clients.length;
-    // var ccrot = function(){
-    //   clearInterval(crot);
-    //   // crot = sirot();      
-    // }
-    // ccrot();
     var id = setInterval(function() {
-        for (var i=0;i<clients.length;i++){
-          sc(clients[i]);
-        }
+      sc();
     }, INTERVAL/5);
 
-    sc(ws);
+    sc();
 
     console.log('websocket connection open');
 
@@ -88,9 +80,6 @@ wss.on('connection', function(ws) {
     ws.on('message', function(message){
         console.log('interrupt!');
         rotate();
-        // ccrot();
-        for (var i=0;i<clients.length;i++){
-          sc(clients[i]);
-        }
+        sc();
     });
 });
