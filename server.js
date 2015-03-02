@@ -16,11 +16,11 @@ var rotate = function() {
   }
 }
 rotate();
-var remaining_time = function() {
+var remaining_time = (function() {
   return setInterval(function(){
     REMAINING = (INTERVAL - REMAINING - 5) <0 ? INTERVAL - 5 + (INTERVAL - REMAINING - 5) : (INTERVAL - REMAINING - 5);
   }, 5);
-}
+})();
 var sirot = function() {
   return setInterval(function() {
     rotate();
