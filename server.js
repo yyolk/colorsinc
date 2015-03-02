@@ -6,6 +6,7 @@ var WebSocketServer = require('ws').Server
 var participants=0;
 var c = [];
 var INTERVAL = 6853;
+var REMAINING = 0;
 // var color = function(){
 //   c = "rgb(" + Math.floor(Math.random()*255) + "," + Math.floor(Math.random()*255) + "," + Math.floor(Math.random()*255) + ")";  
 // }
@@ -15,6 +16,11 @@ var rotate = function() {
   }
 }
 rotate();
+var remaining_time = function() {
+  return setInterval(function(){
+    REMAINING = (INTERVAL - REMAINING - 5) <0 ? INTERVAL - 5 + (INTERVAL - REMAINING - 5) : (INTERVAL - REMAINING - 5);
+  }, 5);
+}
 var sirot = function() {
   return setInterval(function() {
     rotate();
@@ -44,7 +50,9 @@ var sc = function(ws){
     r: r,
     g: g,
     b: b,
-    p: participants
+    p: participants,
+    ir: REMAINING,
+    i: INTERVAL
   }));
 }
 wss.on('connection', function(ws) {
