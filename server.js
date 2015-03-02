@@ -7,15 +7,14 @@ var participants=0;
 var c = [];
 var INTERVAL = 6853;
 var REMAINING = 0;
-// var color = function(){
-//   c = "rgb(" + Math.floor(Math.random()*255) + "," + Math.floor(Math.random()*255) + "," + Math.floor(Math.random()*255) + ")";  
-// }
+
 var rotate = function() {
   for (var i=0;i<3;i++) {
     c[i] = Math.floor(Math.random()*255);
   }
 }
 rotate();
+
 var remaining_time = (function() {
   var sync = INTERVAL / 6;
   var sr = 0;
@@ -25,18 +24,18 @@ var remaining_time = (function() {
     REMAINING = INTERVAL - sr;
   }, sync);
 })();
+
 var sirot = function() {
   return setInterval(function() {
     rotate();
   }, INTERVAL);
 }
+
 app.use(function(req,res,next){
-  // var color = function(){
-    // c = "rgb(" + Math.floor(Math.random()*255) + "," + Math.floor(Math.random()*255) + "," + Math.floor(Math.random()*255) + ")";  
-  // }
   sirot();
   next();
 });
+
 app.use(express.static(__dirname + '/'));
 
 var server = http.createServer(app);
@@ -46,7 +45,7 @@ console.log('http server listening on %d', port);
 
 var wss = new WebSocketServer({server: server});
 console.log('websocket server created');
-// var c;
+
 var crot = sirot();
 var sc = function(ws){
   var r = c[0], g = c[1], b = c[2];
@@ -84,4 +83,3 @@ wss.on('connection', function(ws) {
         sc(ws);
     });
 });
-
