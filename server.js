@@ -50,7 +50,7 @@ console.log('http server listening on %d', port);
 var wss = new WebSocketServer({server: server});
 console.log('websocket server created');
 
-var sc = function(){
+var sc = function(wss){
   var r = c[0], g = c[1], b = c[2];
   wss.broadcast = function broadcast(data) {
     wss.clients.forEach(function each(client){
@@ -67,10 +67,10 @@ var sc = function(){
 }
 wss.on('connection', function(ws) {
     var id = setInterval(function() {
-      sc();
+      sc(wss);
     }, INTERVAL/5);
 
-    sc();
+    sc(wss);
 
     console.log('websocket connection open');
 
@@ -81,6 +81,6 @@ wss.on('connection', function(ws) {
     ws.on('message', function(message){
         console.log('interrupt!');
         rotate();
-        sc();
+        sc(wss);
     });
 });
