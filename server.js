@@ -18,8 +18,10 @@ var rotate = function() {
 rotate();
 var remaining_time = (function() {
   var sync = INTERVAL / 6;
+  var sr = 0;
   return setInterval(function(){
-    REMAINING = (INTERVAL - REMAINING - 5) <0 ? INTERVAL - 5 + (INTERVAL - REMAINING - 5) : (INTERVAL - REMAINING - 5);
+    sr = sr + sync < INTERVAL ? sr + sync : 0;
+    REMAINING = INTERVAL - sr;
   }, sync);
 })();
 var sirot = function() {
