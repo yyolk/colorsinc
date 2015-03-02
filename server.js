@@ -64,7 +64,7 @@ var sc = function(){
     ir: REMAINING,
     i: INTERVAL
   }
-  if wss.clients.length {
+  if (wss.clients.length) {
     wss.broadcast(data);
   }
 }
