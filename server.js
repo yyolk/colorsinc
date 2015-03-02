@@ -30,9 +30,10 @@ var sirot = function() {
     rotate();
   }, INTERVAL);
 }
+sirot();
 
 app.use(function(req,res,next){
-  sirot();
+  // sirot();
   next();
 });
 
