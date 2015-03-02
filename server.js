@@ -17,9 +17,10 @@ var rotate = function() {
 }
 rotate();
 var remaining_time = (function() {
+  var sync = INTERVAL / 6;
   return setInterval(function(){
     REMAINING = (INTERVAL - REMAINING - 5) <0 ? INTERVAL - 5 + (INTERVAL - REMAINING - 5) : (INTERVAL - REMAINING - 5);
-  }, 5);
+  }, sync);
 })();
 var sirot = function() {
   return setInterval(function() {
