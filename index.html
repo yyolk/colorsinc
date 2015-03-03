@@ -3,34 +3,6 @@
     <link rel="stylesheet" type="text/css" href="main.css">
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:300">
     <title>Colorsinc</title>
-    <script src="/tap.js"></script>
-    <script>
-      // var host = location.origin.replace(/^http/, 'ws')
-      var host = 'ws://ping.colorsinc.co';
-      var ws = new WebSocket(host);
-      ws.onmessage = function (event) {
-        var parsed = JSON.parse(event.data);
-        var particpants, color;
-        console.log(parsed);
-        particpants = parsed['p'];
-        color = "rgb(" + parsed['r'] + "," + parsed['g'] + "," + parsed['b'] + ")";
-        document.querySelector('#counter').innerText = particpants;
-        document.body.style.background = color;
-      }
-      var interrupt = function(e){
-        e = e || window.event;
-        var msg = {
-          type: "message",
-          text: "interrupt!",
-          date: Date.now()
-        };
-        ws.send(JSON.stringify(msg));
-      }
-      document.onkeypress = interrupt;
-      var el = document.querySelector('body');
-      var myTap = new Tap(document.body);
-      el.addEventListener('tap', interrupt, false);
-    </script>
   </head>
   <body>
     <div class="about">
@@ -57,4 +29,32 @@
     </div>
     <div id="counter"></div>
   </body>
+  <script src="/tap.js"></script>
+  <script>
+    // var host = location.origin.replace(/^http/, 'ws')
+    var host = 'ws://ping.colorsinc.co';
+    var ws = new WebSocket(host);
+    ws.onmessage = function (event) {
+      var parsed = JSON.parse(event.data);
+      var particpants, color;
+      console.log(parsed);
+      particpants = parsed['p'];
+      color = "rgb(" + parsed['r'] + "," + parsed['g'] + "," + parsed['b'] + ")";
+      document.querySelector('#counter').innerText = particpants;
+      document.body.style.background = color;
+    }
+    var interrupt = function(e){
+      e = e || window.event;
+      var msg = {
+        type: "message",
+        text: "interrupt!",
+        date: Date.now()
+      };
+      ws.send(JSON.stringify(msg));
+    }
+    document.onkeypress = interrupt;
+    var el = document.querySelector('body');
+    var myTap = new Tap(document.body);
+    el.addEventListener('tap', interrupt, false);
+  </script>
 </html>
