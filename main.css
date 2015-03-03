@@ -1,3 +1,10 @@
+body {
+  -webkit-transition: background-color 333ms linear;
+  -moz-transition: background-color 333ms linear;
+  -o-transition: background-color 333ms linear;
+  -ms-transition: background-color 333ms linear;
+  transition: background-color 333ms linear;
+}
 .about, #counter{
   font-family: 'Open Sans', serif;
   -webkit-font-smoothing: antialiased;
