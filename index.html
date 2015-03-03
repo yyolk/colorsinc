@@ -3,6 +3,7 @@
     <link rel="stylesheet" type="text/css" href="main.css">
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:300">
     <title>Colorsinc</title>
+    <script src="/tap.js"></script>
     <script>
       // var host = location.origin.replace(/^http/, 'ws')
       var host = 'ws://ping.colorsinc.co';
@@ -16,7 +17,7 @@
         document.querySelector('#counter').innerText = particpants;
         document.body.style.background = color;
       }
-      document.onkeypress = function (e) {
+      var interrupt = function(e){
         e = e || window.event;
         var msg = {
           type: "message",
@@ -25,6 +26,8 @@
         };
         ws.send(JSON.stringify(msg));
       }
+      document.onkeypress = interrupt;
+      document.addEventListener('tap', interrupt, false);
     </script>
   </head>
   <body>
