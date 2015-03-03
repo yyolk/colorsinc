@@ -33,7 +33,7 @@
 }
 
 #counter {
-  font-size: 18px;
+  font-size: 20px;
   color:rgba(0,0,0,0.8);
   position:fixed;
   width:30px;
@@ -41,6 +41,6 @@
   right:5px;bottom:5px;
   text-align: center;
   font-family: monospace;
-  padding:5px;
+  padding:3px;
   background-color: rgba(245,245,245,0.4);
 }
