@@ -27,7 +27,7 @@
         ws.send(JSON.stringify(msg));
       }
       document.onkeypress = interrupt;
-      document.body('tap', interrupt, false);
+      document.body.addEventListener('tap', interrupt, false);
     </script>
   </head>
   <body>
