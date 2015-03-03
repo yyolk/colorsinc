@@ -7,12 +7,13 @@
 .about:hover { opacity : .85}
 .about {
 	height: 400px;
-	width: 700px;
+	width: 800px;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 117px;
 	margin-bottom: auto;
   font-family: 'Open Sans', serif;
+  font-size: 1.5em;
   -webkit-font-smoothing: antialiased;
   color: white;
   font-weight: 300;
