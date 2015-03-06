@@ -1,9 +1,9 @@
 body {
-  -webkit-transition: background-color 161ms linear;
-  -moz-transition: background-color 161ms linear;
-  -o-transition: background-color 161ms linear;
-  -ms-transition: background-color 161ms linear;
-  transition: background-color 161ms linear;
+  -webkit-transition: background-color 61ms linear;
+  -moz-transition: background-color 61ms linear;
+  -o-transition: background-color 61ms linear;
+  -ms-transition: background-color 61ms linear;
+  transition: background-color 61ms linear;
 }
 .about, #counter{
   font-family: 'Open Sans', serif;
