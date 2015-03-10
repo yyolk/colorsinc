@@ -50,7 +50,7 @@ body {
   position:fixed;
   /* width:30px;
   height:30px; */
-  left:5px;bottom:5px;
+  right:5px;bottom:5px;
   text-align: center;
   font-family: monospace;
   padding:5px;
