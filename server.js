@@ -40,7 +40,12 @@ console.log('websocket server created');
 wss.broadcast = function (data) {
   data = JSON.stringify(data);
   wss.clients.forEach(function each(client) {
-    client.send(data);
+    try {
+      client.send(data);    
+    }
+    catch (err) {
+      void 0;
+    }
   });
 };
 var sc = function(){
